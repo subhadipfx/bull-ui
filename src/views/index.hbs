@@ -1,0 +1,31 @@
+<div class="container">
+    <table>
+        <thead>
+        <tr class=" blue lighten-3">
+            <th rowspan="2" class="center">Queue Name</th>
+            <th colspan="6" class="center primary-header">Jobs</th>
+        </tr>
+        <tr class=" blue lighten-3">
+            <th>Delayed</th>
+            <th>Paused</th>
+            <th>Waiting</th>
+            <th>Active</th>
+            <th>Completed</th>
+            <th>Failed</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each queueList}}
+        <tr class="hoverable">
+            <th class="center">{{this.name}}</th>
+            <td>{{this.jobCounts.delayed}}</td>
+            <td>{{this.jobCounts.paused}}</td>
+            <td>{{this.jobCounts.waiting}}</td>
+            <td>{{this.jobCounts.active}}</td>
+            <td>{{this.jobCounts.completed}}</td>
+            <td>{{this.jobCounts.failed}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,14 @@
+.brand-logo{
+    margin-left: 15px;
+}
+
+table{
+    margin-top: 5px;
+}
+
+.primary-header{
+    border-bottom: 2px solid black;
+}
+.custom-error{
+    padding: 20px;
+}

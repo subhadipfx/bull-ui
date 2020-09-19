@@ -7,21 +7,8 @@ export default class QueueController{
 
     public static listQueuesWithJobCounts(request: Request, response: Response){
         QueueService.list()
-            .then(queueList =>
-                UtilityService.responseMessage(response,
-                {
-                message: "Queue List Fetched",
-                data: queueList,
-                code: HTTP_STATUS.SUCCESS
-            }
-            ))
-            .catch(error =>
-                UtilityService.responseMessage(response,
-                {
-                    message: error.message,
-                    code: HTTP_STATUS.INTERNAL_ERROR
-                })
-            )
+            .then(queueList => response.render('index',{queueList, queue_size: queueList.length }) )
+            .catch(error => response.render('index',{ error_message:error.message}) )
     }
 
     public static getJobsByStatus(request: Request, response: Response){
@@ -34,12 +21,14 @@ export default class QueueController{
         }
         let jobTypes:any[] = String(request.query.types).split(',');
         new QueueService(String(request.params.queue)).getJobsByStatus(jobTypes)
-            .then(jobList => UtilityService.responseMessage(response,
-                {
-                    message: "Job List Fetched",
-                    data: jobList,
-                    code: HTTP_STATUS.SUCCESS
-                }))
+            .then(jobList => response.render('queue_details')
+                // UtilityService.responseMessage(response,
+                // {
+                //     message: "Job List Fetched",
+                //     data: jobList,
+                //     code: HTTP_STATUS.SUCCESS
+                // })
+            )
             .catch(error =>
                 UtilityService.responseMessage(response,
                     {
