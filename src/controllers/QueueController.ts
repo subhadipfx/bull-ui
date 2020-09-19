@@ -21,7 +21,14 @@ export default class QueueController{
         }
         let jobTypes:any[] = String(request.query.types).split(',');
         new QueueService(String(request.params.queue)).getJobsByStatus(jobTypes)
-            .then(jobList => response.render('queue_details')
+            .then(jobList => {
+                   // response.json(jobList);
+                    response.render('queue_details', {
+                        queue: String(request.params.queue),
+                        jobType: String(request.query.types),
+                        jobList: jobList
+                    })
+                }
                 // UtilityService.responseMessage(response,
                 // {
                 //     message: "Job List Fetched",

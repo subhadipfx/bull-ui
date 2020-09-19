@@ -12,3 +12,8 @@ table{
 .custom-error{
     padding: 20px;
 }
+.job-title{
+    width: 100%;
+    display: flex;
+    justify-content: space-between
+}

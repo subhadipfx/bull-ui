@@ -41,6 +41,7 @@ export class QueueService {
         start = start ? start : 0;
         end = end ? end : -1;
         this.queue.getJobs(types, start, end)
+            .then(jobs => jobs.map(job => job.toJSON()))
             .then(jobs => defer.resolve(jobs))
             .catch(error => defer.reject(error))
         return defer.promise;

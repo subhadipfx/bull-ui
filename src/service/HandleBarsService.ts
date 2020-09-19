@@ -12,7 +12,12 @@ export class HandleBarsService {
 
     private static helpers(){
         return {
-            title : () => "Bull UI"
+            title : () => "Bull UI",
+            setActive : (queue, link) => queue == link ? "active" : "",
+            prettifyJobID: (id, name) => name != "__default__" ? name+":"+id : id,
+            timestampToDate: (timestamp) => new Date(timestamp).toLocaleString(),
+            verifyJobProgress: (progress, jobType) => (jobType == "completed" && progress == 0) ? 100 : progress,
+            stringify: (obj) => JSON.stringify(obj)
         }
     }
 }
