@@ -1,0 +1,32 @@
+.brand-logo{
+    margin-left: 15px;
+}
+
+table{
+    margin-top: 5px;
+}
+
+.primary-header{
+    border-bottom: 2px solid black;
+}
+.custom-error{
+    padding: 20px;
+}
+.job-title{
+    width: 100%;
+    display: flex;
+    justify-content: space-between
+}
+
+.custom-badge {
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: #2c3e50;
+    color: #ffffff;
+    border-radius: 3rem;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding: .05rem .8rem .1rem;
+    line-height: inherit;
+}
