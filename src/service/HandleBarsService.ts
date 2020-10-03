@@ -17,7 +17,10 @@ export class HandleBarsService {
             prettifyJobID: (id, name) => name != "__default__" ? name+":"+id : id,
             timestampToDate: (timestamp) => new Date(timestamp).toLocaleString(),
             verifyJobProgress: (progress, jobType) => (jobType == "completed" && progress == 0) ? 100 : progress,
-            stringify: (obj) => JSON.stringify(obj)
+            stringify: (data) => JSON.stringify(data),
+            ifEquals: function (a, b, options) {
+                return a == b ? options.fn(this) : options.inverse(this)
+            },
         }
     }
 }

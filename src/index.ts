@@ -16,6 +16,8 @@ app.set('view engine', 'hbs');
 
 // app.get('/',(req, res) => res.render('index'))
 app.use('/', new QueueRouter().routes().associate());
-app.listen(3100, () => {
-    console.log("Started")
-})
+// app.listen(3100, () => {
+//     console.log("Started")
+// })
+
+export const UI = app;

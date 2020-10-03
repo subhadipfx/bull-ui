@@ -17,7 +17,9 @@
         <tbody>
         {{#each queueList}}
         <tr class="hoverable">
-            <th class="center">{{this.name}}</th>
+            <th class="center">
+                <a href="/{{this.name}}?types=active">{{this.name}}</a>
+            </th>
             <td>{{this.jobCounts.delayed}}</td>
             <td>{{this.jobCounts.paused}}</td>
             <td>{{this.jobCounts.waiting}}</td>

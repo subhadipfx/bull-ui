@@ -1,0 +1,16 @@
+<div>
+    <table>
+        <tr>
+            <th class="right">Total no of logs:  {{ item.length }}</th>
+        </tr>
+        {{#each item}}
+            <tr>
+                <td>{{this}}</td>
+            </tr>
+        {{else}}
+            <tr>
+                <td>Sorry! No Logs Found</td>
+            </tr>
+        {{/each}}
+    </table>
+</div>

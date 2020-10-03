@@ -1,4 +1,4 @@
-import {JobCounts} from "bull"
+import {JobCounts, JobStatus} from "bull"
 
 export interface QueueJobList {
     name: string,
@@ -18,4 +18,24 @@ export interface ResponseMessage {
     message: string,
     data?: any,
     code: HTTP_STATUS
+}
+
+export interface JobInfo {
+    id: string,
+    name: string,
+    queue: string,
+    status: JobStatus
+    data: any,
+    opts: any,
+    progress: number,
+    stacktrace: any[]
+    timestamp: Date,
+    processedOn: Date
+    finishedOn: Date,
+}
+
+
+export interface JobLogs {
+    logs: string[],
+    count: number
 }

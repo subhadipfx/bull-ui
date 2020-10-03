@@ -21,12 +21,13 @@ export default class QueueController{
         }
         let jobTypes:any[] = String(request.query.types).split(',');
         new QueueService(String(request.params.queue)).getJobsByStatus(jobTypes)
-            .then(jobList => {
-                   // response.json(jobList);
+            .then(({jobCounts, jobs}) => {
+                   // response.json(jobs);
                     response.render('queue_details', {
                         queue: String(request.params.queue),
                         jobType: String(request.query.types),
-                        jobList: jobList
+                        jobList: jobs,
+                        jobCounts: jobCounts
                     })
                 }
                 // UtilityService.responseMessage(response,
@@ -157,5 +158,25 @@ export default class QueueController{
                     { message: error.message,
                                 code: HTTP_STATUS.BAD_REQUEST
                     }))
+    }
+
+    public static getJobLogs(request: Request, response: Response){
+        // console.log(request.body)
+        if(request.body.type == "logs"){
+            new QueueService(request.body.queue).getJobLogs(request.body.job)
+                .then(logs => response.render('./partials/log_table',{item: logs, layout: ''}))
+                .catch(error => response.render('./partials/log_table',{ error_message:error.message }) )
+        }else{
+            if(request.body.stacktrace == null){
+                response.render('./partials/log_table',{item: [], layout: ''})
+            }else{
+                response.render('./partials/log_table',{item: request.body.stacktrace, layout: ''})
+            }
+        }
+
+    }
+
+    public static createStacktrace(request: Request, response: Response){
+
     }
 }
